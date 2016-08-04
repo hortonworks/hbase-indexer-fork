@@ -81,8 +81,6 @@ public class FusionDocumentWriter implements SolrInputDocumentWriter {
     String fusionPass = connectionParams.get("fusion.pass");
     String fusionRealm = connectionParams.get("fusion.realm");
 
-    log.error("RM FusionDocumentWriter " + this + " user [" + fusionUser + "]" + "fusionEndpoint [" + fusionEndpoint + "]");
-
     log.info("Connecting to Fusion pipeline " + fusionEndpoint + " as " + fusionUser + ", realm=" + fusionRealm);
     try {
       pipelineClient = new FusionPipelineClient(fusionEndpoint, fusionUser, fusionPass, fusionRealm);
