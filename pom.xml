@@ -20,7 +20,7 @@
 
   <properties>
 
-    <project-version>2.2.5</project-version>
+    <project-version>2.2.7</project-version>
 
     <hdp.version></hdp.version>
     <!--hdp.version>.2.3.2.0-2950</hdp.version-->
