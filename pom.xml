@@ -20,12 +20,12 @@
 
   <properties>
 
-    <project-version>3.0.0</project-version>
+    <project-version>2.2.10</project-version>
 
     <hdp.version></hdp.version>
     <!--hdp.version>.2.6.0.0-570</hdp.version-->
 
-    <version.solr>5.5.2</version.solr>
+    <version.solr>5.5.5</version.solr>
     <version.guava>11.0.2</version.guava>
     <version.joda-time>1.6</version.joda-time>
     <version.slf4j>1.7.5</version.slf4j>
