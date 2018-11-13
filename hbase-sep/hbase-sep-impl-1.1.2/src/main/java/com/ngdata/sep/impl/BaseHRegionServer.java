@@ -30,8 +30,6 @@ import org.apache.hadoop.hbase.protobuf.generated.AdminProtos.WarmupRegionReques
 import org.apache.hadoop.hbase.protobuf.generated.AdminProtos.WarmupRegionResponse;
 import org.apache.hadoop.hbase.protobuf.generated.QuotaProtos.GetSpaceQuotaSnapshotsResponse;
 import org.apache.hadoop.hbase.protobuf.generated.QuotaProtos.GetSpaceQuotaSnapshotsRequest;
-import org.apache.hadoop.hbase.protobuf.generated.QuotaProtos.GetSpaceQuotaEnforcementsResponse;
-import org.apache.hadoop.hbase.protobuf.generated.QuotaProtos.GetSpaceQuotaEnforcementsRequest;
 import org.apache.hadoop.hbase.protobuf.generated.ClientProtos;
 import org.apache.hadoop.hbase.zookeeper.MetaTableLocator;
 import org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher;
@@ -194,14 +192,6 @@ public class BaseHRegionServer implements AdminProtos.AdminService.BlockingInter
 		WarmupRegionRequest request) throws ServiceException {
 	throw new UnsupportedOperationException("Not implemented");
   }
-
- @Override
- public GetSpaceQuotaEnforcementsResponse getSpaceQuotaEnforcements(
-          RpcController controller,
-          GetSpaceQuotaEnforcementsRequest request)
-          throws ServiceException {
-       throw new UnsupportedOperationException("Not implemented");
- }
 
  @Override
  public GetSpaceQuotaSnapshotsResponse getSpaceQuotaSnapshots(
