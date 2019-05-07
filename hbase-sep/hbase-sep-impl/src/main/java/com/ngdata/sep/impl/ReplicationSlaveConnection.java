@@ -147,7 +147,7 @@ abstract class ReplicationSlaveConnection implements Connection {
   } 
 
   @Override
-  void clearRegionLocationCache() {}
+  public void clearRegionLocationCache() {}
 
   @Override 
   public TableBuilder getTableBuilder(final TableName tn, ExecutorService pool) { 
