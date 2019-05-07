@@ -146,6 +146,9 @@ abstract class ReplicationSlaveConnection implements Connection {
     return this.closed; 
   } 
 
+  @Override
+  void clearRegionLocationCache() {}
+
   @Override 
   public TableBuilder getTableBuilder(final TableName tn, ExecutorService pool) { 
     if (isClosed()) { 
