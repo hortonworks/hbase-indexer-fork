@@ -80,7 +80,7 @@ public class SepConsumerTest {
     private WAL.Entry createHlogEntry(byte[] tableName, long writeTime, Cell... keyValues) {
         WAL.Entry entry = mock(WAL.Entry.class, Mockito.RETURNS_DEEP_STUBS);
         when(entry.getEdit().getCells()).thenReturn(Lists.newArrayList(keyValues));
-        when(entry.getKey().getTablename()).thenReturn(TableName.valueOf(tableName));
+        when(entry.getKey().getTableName()).thenReturn(TableName.valueOf(tableName));
         when(entry.getKey().getWriteTime()).thenReturn(writeTime);
         when(entry.getKey().getEncodedRegionName()).thenReturn(encodedRegionName);
         when(entry.getKey().getClusterIds()).thenReturn(clusterUUIDs);
