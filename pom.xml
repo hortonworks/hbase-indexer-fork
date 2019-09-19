@@ -30,7 +30,7 @@
     <version.joda-time>${cdh.joda-time.version}</version.joda-time>
     <version.slf4j>${cdh.slf4j.version}</version.slf4j>
     <version.hbase>${cdh.hbase.version}</version.hbase>
-    <version.hadoop>${cdh.hadoop.version}</version.hadoop>    
+    <version.hadoop>${cdh.hadoop.version}</version.hadoop>
     <version.zookeeper>${cdh.zookeeper.version}</version.zookeeper>
     <version.jackson>${cdh.jackson.version}</version.jackson>
     <version.jackson-mapper-asl>${cdh.jackson-mapper-asl.version}</version.jackson-mapper-asl>
@@ -38,14 +38,13 @@
     <version.jetty>${cdh.jetty9.version}</version.jetty>
     <version.httpclient>${cdh.httpcomponents.version}</version.httpclient>
     <version.httpcore>${cdh.httpcomponents.core.version}</version.httpcore>
-    <version.kite>${cdh.kite.version}</version.kite>
     <version.jersey>${cdh.jersey.version}</version.jersey>
     <version.jaxb-api>${cdh.jaxb-api.version}</version.jaxb-api>
     <version.curator>${cdh.curator.version}</version.curator>
     <version.solr-security-util>${cdh.solr.version}</version.solr-security-util>
-    <version.sentry-binding-hbase-indexer>${cdh.sentry.version}</version.sentry-binding-hbase-indexer>    
     <version.netty>${cdh.io.netty-all.version}</version.netty>
     <version.netty.hadoop>${cdh.io.netty.version}</version.netty.hadoop>
+    <version.search>1.0.0.7.1.0.0-SNAPSHOT</version.search>
         
     <version.surefire.plugin>${cdh.surefire.version}</version.surefire.plugin>
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
@@ -193,159 +192,10 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.kitesdk</groupId>
-        <artifactId>kite-morphlines-all-except-solrcell</artifactId>
-        <version>${version.kite}</version>
+        <groupId>com.cloudera.search</groupId>
+        <artifactId>kite-morphlines-except-solr-cell</artifactId>
+        <version>${version.search}</version>
         <type>pom</type>
-      </dependency>
-      <!-- CDH BUILD: add sentry to dependency -->
-      <dependency>
-        <groupId>org.apache.sentry</groupId>
-        <artifactId>sentry-binding-hbase-indexer</artifactId>
-        <version>${version.sentry-binding-hbase-indexer}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-core</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-api-jdo</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-rdbms</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>javax.jdo</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.sentry</groupId>
-            <artifactId>sentry-core-model-solr</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.sentry</groupId>
-            <artifactId>sentry-core-model-kafka</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.sentry</groupId>
-            <artifactId>sentry-binding-hive-conf</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.sentry</groupId>
-            <artifactId>sentry-binding-hive-follower</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.sentry</groupId>
-            <artifactId>sentry-hdfs-common</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-shims</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-beeline</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-service</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.hive.hcatalog</groupId>
-            <artifactId>hive-hcatalog-server-extensions</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>ant-contrib</groupId>
-            <artifactId>ant-contrib</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-core</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-servlets</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-jvm</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-util</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-http</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-x-discovery</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-client</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-common</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-metastore</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.apache.sentry</groupId>
-            <artifactId>sentry-shaded-miscellaneous</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.sentry</groupId>
-        <artifactId>sentry-tools</artifactId>
-        <version>${version.sentry-binding-hbase-indexer}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.solr</groupId>
@@ -421,7 +271,7 @@
       <dependency>
         <groupId>com.cloudera.search</groupId>
         <artifactId>search-mr</artifactId>
-        <version>${cdh.search.version}</version>
+        <version>${version.search}</version>
         <exclusions>
           <exclusion>
             <groupId>org.ow2.asm</groupId>

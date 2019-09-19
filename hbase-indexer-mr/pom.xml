@@ -50,7 +50,7 @@
     <dependency>
       <groupId>com.cloudera.search</groupId>
       <artifactId>search-mr</artifactId>
-      <version>${cdh.search.version}</version>
+      <version>${version.search}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.hbase</groupId>

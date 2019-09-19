@@ -36,8 +36,8 @@
       <artifactId>hbase-indexer-engine</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.kitesdk</groupId>
-      <artifactId>kite-morphlines-all-except-solrcell</artifactId>
+      <groupId>com.cloudera.search</groupId>
+      <artifactId>kite-morphlines-except-solr-cell</artifactId>
       <type>pom</type>
     </dependency>
     <dependency>

@@ -15,7 +15,6 @@
  */
 package com.ngdata.hbaseindexer;
 
-import com.ngdata.hbaseindexer.ConfKeys;
 import com.ngdata.hbaseindexer.master.IndexerMaster;
 import com.ngdata.hbaseindexer.model.api.IndexerProcessRegistry;
 import com.ngdata.hbaseindexer.model.api.WriteableIndexerModel;
@@ -44,20 +43,14 @@ import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.util.Strings;
 import org.apache.hadoop.net.DNS;
-import org.apache.sentry.binding.hbaseindexer.authz.HBaseIndexerAuthzBinding;
-import org.apache.sentry.binding.hbaseindexer.conf.HBaseIndexerAuthzConf;
-import org.apache.sentry.binding.hbaseindexer.rest.SentryIndexResource;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.net.URL;
 import java.util.EnumSet;
 import java.util.concurrent.TimeUnit;
 
@@ -199,32 +192,8 @@ public class Main {
         context.addFilter(ErrorHandlerFilter.class, "*", EnumSet.of(DispatcherType.REQUEST));
         context.getServletContext().setAttribute(HBaseIndexerAuthFilter.CONF_ATTRIBUTE, conf);
 
-        HBaseIndexerAuthzBinding binding = getAuthzBinding(conf, hostname);
-        if (binding != null) {
-          context.getServletContext().setAttribute(SentryIndexResource.SENTRY_BINDING, binding);
-        }
-
         server.setHandler(context);
         server.start();
-    }
-
-    private HBaseIndexerAuthzBinding getAuthzBinding(Configuration conf, String hostname) {
-        String sentrySiteLocation = conf.get(SentryIndexResource.SENTRY_SITE);
-        try {
-            if (sentrySiteLocation != null) {
-                URL sentrySiteURL = new File(sentrySiteLocation).toURI().toURL();
-                HBaseIndexerAuthzConf authzConf = new HBaseIndexerAuthzConf(sentrySiteURL);
-                // set the hostname to do principal translation
-                authzConf.set(HBaseIndexerAuthzConf.AuthzConfVars.PRINCIPAL_HOSTNAME.getVar(), hostname);
-                return new HBaseIndexerAuthzBinding(authzConf);
-            } else {
-                log.info("HBaseIndexerAuthzBinding not created because " + SentryIndexResource.SENTRY_SITE
-                    + " not set");
-            }
-        } catch (Exception ex) {
-            log.error("Unable to create HBaseIndexerAuthzBinding", ex);
-        }
-        return null;
     }
 
     private void setupMetrics(Configuration conf) {
