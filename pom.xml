@@ -25,13 +25,13 @@
   </parent>
 
   <properties>
-    <version.solr>7.4.0.7.0.2.0-SNAPSHOT</version.solr>
+    <version.solr>7.4.0.7.1.0.0-SNAPSHOT</version.solr>
     <version.guava>11.0.2</version.guava>
     <version.joda-time>2.9.9</version.joda-time>
     <version.slf4j>1.7.25</version.slf4j>
-    <version.hbase>2.2.0.7.0.2.0-SNAPSHOT</version.hbase>
-    <version.hadoop>3.1.1.7.0.2.0-SNAPSHOT</version.hadoop>
-    <version.zookeeper>3.5.5.7.0.2.0-SNAPSHOT</version.zookeeper>
+    <version.hbase>2.2.0.7.1.0.0-SNAPSHOT</version.hbase>
+    <version.hadoop>3.1.1.7.1.0.0-SNAPSHOT</version.hadoop>
+    <version.zookeeper>3.5.5.7.1.0.0-SNAPSHOT</version.zookeeper>
     <version.jackson>1.9.13</version.jackson>
     <version.jackson-mapper-asl>1.9.13-cloudera.1</version.jackson-mapper-asl>
     <version.jackson-hadoop>2.10.0</version.jackson-hadoop>
@@ -41,10 +41,10 @@
     <version.jersey>1.19</version.jersey>
     <version.jaxb-api>2.2.11</version.jaxb-api>
     <version.curator>2.7.1</version.curator>
-    <version.solr-security-util>7.4.0.7.0.2.0-SNAPSHOT</version.solr-security-util>
+    <version.solr-security-util>7.4.0.7.1.0.0-SNAPSHOT</version.solr-security-util>
     <version.netty>4.1.17.Final</version.netty>
     <version.netty.hadoop>3.10.5.Final</version.netty.hadoop>
-    <version.search>1.0.0.7.0.2.0-SNAPSHOT</version.search>
+    <version.search>1.0.0.7.1.0.0-SNAPSHOT</version.search>
         
     <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
@@ -58,7 +58,7 @@
   <groupId>com.ngdata</groupId>
   <artifactId>hbase-indexer</artifactId>
   <packaging>pom</packaging>
-  <version>1.5.0.7.0.2.0-SNAPSHOT</version>
+  <version>1.5.0.7.1.0.0-SNAPSHOT</version>
   <name>HBase Indexer</name>
 
   <url>http://www.ngdata.com/</url>
