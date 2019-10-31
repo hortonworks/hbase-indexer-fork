@@ -18,12 +18,6 @@
 -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <parent>
-    <groupId>com.cloudera.cdh</groupId>
-    <artifactId>cdh-root</artifactId>
-    <version>6.x-SNAPSHOT</version>
-  </parent>
-
   <properties>
     <version.solr>7.4.0.7.1.0.0-SNAPSHOT</version.solr>
     <version.guava>11.0.2</version.guava>
@@ -352,7 +346,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>${cdh.junit.version}</version>
+        <version>4.8.1</version>
         <scope>test</scope>
       </dependency>
       <dependency>
