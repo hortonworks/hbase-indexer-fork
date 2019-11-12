@@ -41,6 +41,7 @@ import org.apache.curator.framework.imps.DefaultACLProvider;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
+import org.apache.hadoop.hbase.security.User;
 import org.apache.hadoop.hbase.util.Strings;
 import org.apache.hadoop.net.DNS;
 import org.eclipse.jetty.server.Connector;
@@ -107,6 +108,25 @@ public class Main {
         startServices(conf);
     }
 
+    private void loginHbaseUserFromKeytab(Configuration conf, String hostname) {
+    	String keytabParam = "hbase.regionserver.keytab.file";
+    	String keyTab = conf.get(keytabParam, "default");
+    	String principalParam = "hbase.regionserver.kerberos.principal";
+    	String principal = conf.get(principalParam, "default");
+
+    	// log in with the hbase user
+    	try {
+    		if (log.isInfoEnabled()) {
+    			log.info("Authenticating Hbase user. Keytab is " + keyTab + ", kerberos principal is " + principal);
+    		}
+    		log.debug("hbase-indexer main: invoking user.login of hbase common");
+    		User.login(conf, keytabParam, principalParam, hostname);
+
+    	} catch (Exception ex) {
+    		log.warn("Unable to authenticate hbase principal", ex);
+    	}
+    }
+
     /**
      * @param conf the configuration object containing the hbase-indexer configuration, as well
      *             as the hbase/hadoop settings. Typically created using {@link HBaseIndexerConfiguration}.
@@ -127,6 +147,7 @@ public class Main {
         ACLProvider aclProvider = null;
         if (kerberosEnabled) {
           aclProvider = new SaslZkACLProvider(conf, hostname);
+          loginHbaseUserFromKeytab(conf, hostname);
         } else {
           aclProvider = new DefaultACLProvider();
         }
@@ -156,17 +177,17 @@ public class Main {
 
     private void startHttpServer(Configuration conf, String hostname) throws Exception {
         int httpPort = conf.getInt(ConfKeys.HTTP_PORT, 11060);
-        log.debug("REST interface configuring to run on port: " + httpPort);        
+        log.debug("REST interface configuring to run on port: " + httpPort);
         server = new Server(httpPort);
-        log.debug("REST interface configured to run on port: " + httpPort);        
-        
+        log.debug("REST interface configured to run on port: " + httpPort);
+
         int headerBufferSize = conf.getInt(ConfKeys.HTTP_HEADER_BUFFER_SIZE, 64 * 1024);
-        log.debug("REST headerBufferSize: " + headerBufferSize);        
+        log.debug("REST headerBufferSize: " + headerBufferSize);
         for (Connector connector : server.getConnectors()) {
           for (org.eclipse.jetty.server.ConnectionFactory factory : connector.getConnectionFactories()) {
             if (factory instanceof HttpConnectionFactory) {
-              log.debug("REST headerBufferSize forced to: " + headerBufferSize);        
-              HttpConnectionFactory httpFactory = (HttpConnectionFactory) factory; 
+              log.debug("REST headerBufferSize forced to: " + headerBufferSize);
+              HttpConnectionFactory httpFactory = (HttpConnectionFactory) factory;
               httpFactory.getHttpConfiguration().setRequestHeaderSize(headerBufferSize);
               httpFactory.getHttpConfiguration().setResponseHeaderSize(headerBufferSize);
             }
