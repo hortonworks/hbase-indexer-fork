@@ -16,7 +16,6 @@
 package com.ngdata.hbaseindexer.util.solr;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.io.ByteStreams;
 import com.google.common.io.Files;
 import com.ngdata.sep.util.zookeeper.ZkUtil;
 import com.ngdata.sep.util.zookeeper.ZooKeeperItf;
@@ -153,8 +152,8 @@ public class SolrTestingUtility {
             throws IOException {
         // Write schema & solrconf to temporary dir, upload dir, delete tmp dir
         File tmpConfDir = Files.createTempDir();
-        Files.copy(ByteStreams.newInputStreamSupplier(schema), new File(tmpConfDir, "managed-schema"));
-        Files.copy(ByteStreams.newInputStreamSupplier(solrconf), new File(tmpConfDir, "solrconfig.xml"));
+        Files.write(schema, new File(tmpConfDir, "managed-schema"));
+        Files.write(solrconf, new File(tmpConfDir, "solrconfig.xml"));
         uploadConfig(confName, tmpConfDir);
         FileUtils.deleteDirectory(tmpConfDir);
     }

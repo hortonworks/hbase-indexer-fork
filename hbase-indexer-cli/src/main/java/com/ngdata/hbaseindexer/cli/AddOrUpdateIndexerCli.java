@@ -217,7 +217,7 @@ public abstract class AddOrUpdateIndexerCli extends BaseIndexCli {
                 throw new CliException(msg.toString());
             }
 
-            data = ByteStreams.toByteArray(Files.newInputStreamSupplier(file).getInput());
+            data = ByteStreams.toByteArray(Files.asByteSource(file).openStream());
 
             try {
                 IndexerComponentFactoryUtil

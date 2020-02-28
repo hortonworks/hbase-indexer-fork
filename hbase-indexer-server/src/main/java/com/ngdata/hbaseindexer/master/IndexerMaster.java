@@ -322,7 +322,7 @@ public class IndexerMaster {
                             markBatchBuildCompleted(indexerName, false);
                             executor.shutdownNow();
                         }
-                    });
+                    }, MoreExecutors.directExecutor());
 
                     BatchBuildInfo jobInfo = new BatchBuildInfo(System.currentTimeMillis(), null, null, batchArguments);
                     updatedIndexer
