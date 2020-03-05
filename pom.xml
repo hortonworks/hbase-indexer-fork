@@ -22,7 +22,7 @@
     <version.solr>8.4.1.7.1.1.0-SNAPSHOT</version.solr>
     <version.guava>28.1-jre</version.guava>
     <version.joda-time>2.9.9</version.joda-time>
-    <version.slf4j>1.7.25</version.slf4j>
+    <version.slf4j>1.7.30</version.slf4j>
     <version.hbase>2.2.3.7.1.1.0-SNAPSHOT</version.hbase>
     <version.hadoop>3.1.1.7.1.1.0-SNAPSHOT</version.hadoop>
     <version.zookeeper>3.5.5.7.1.1.0-SNAPSHOT</version.zookeeper>
@@ -30,15 +30,33 @@
     <version.jackson-mapper-asl>1.9.13-cloudera.1</version.jackson-mapper-asl>
     <version.jackson-hadoop>2.10.0</version.jackson-hadoop>
     <version.jetty>9.4.26.v20200117</version.jetty>
-    <version.httpclient>4.5.3</version.httpclient>
-    <version.httpcore>4.4.6</version.httpcore>
+    <version.httpclient>4.5.6</version.httpclient>
+    <version.httpcore>4.4.10</version.httpcore>
     <version.jersey>1.19</version.jersey>
     <version.jaxb-api>2.2.11</version.jaxb-api>
     <version.curator>4.2.0</version.curator>
     <version.solr-security-util>8.4.1.7.1.1.0-SNAPSHOT</version.solr-security-util>
-    <version.netty>4.1.17.Final</version.netty>
+    <version.netty>4.1.47.Final</version.netty>
     <version.netty.hadoop>3.10.5.Final</version.netty.hadoop>
     <version.search>1.0.0.7.1.1.0-SNAPSHOT</version.search>
+    <version.commons.beanutils>1.9.4</version.commons.beanutils>
+    <version.commons.cli>1.2</version.commons.cli>
+    <version.commons.codec>1.11</version.commons.codec>
+    <version.commons.collections>3.2.2</version.commons.collections>
+    <version.commons.compress>1.19</version.commons.compress>
+    <version.commons.daemon>1.0.13</version.commons.daemon>
+    <version.commons.io>2.6</version.commons.io>
+    <version.commons.lang3>3.8.1</version.commons.lang3>
+    <version.gson>2.2.4</version.gson>
+    <version.jline>2.12</version.jline>
+    <version.kerby>1.1.1</version.kerby>
+    <version.log4j>1.2.17</version.log4j>
+    <version.log4j2>2.11.2</version.log4j2>
+    <version.junit>4.8.1</version.junit>
+    <version.mockito>1.9.0</version.mockito>
+    <version.protobuf2>2.5.0</version.protobuf2>
+    <version.re2j>1.2</version.re2j>
+    <version.thrift>0.12.0</version.thrift>
         
     <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
@@ -89,6 +107,111 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>commons-beanutils</groupId>
+        <artifactId>commons-beanutils</artifactId>
+        <version>${version.commons.beanutils}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-cli</groupId>
+        <artifactId>commons-cli</artifactId>
+        <version>${version.commons.cli}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>${version.commons.codec}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>${version.commons.collections}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-compress</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>${version.commons.compress}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-daemon</groupId>
+        <artifactId>commons-daemon</artifactId>
+        <version>${version.commons.daemon}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${version.commons.io}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-lang3</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${version.commons.lang3}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>${version.gson}</version>
+      </dependency>
+      <dependency>
+        <groupId>jline</groupId>
+        <artifactId>jline</artifactId>
+        <version>${version.jline}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.kerby</groupId>
+        <artifactId>kerb-core</artifactId>
+        <version>${version.kerby}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.kerby</groupId>
+        <artifactId>kerb-util</artifactId>
+        <version>${version.kerby}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.kerby</groupId>
+        <artifactId>kerby-asn1</artifactId>
+        <version>${version.kerby}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.kerby</groupId>
+        <artifactId>kerby-pkix</artifactId>
+        <version>${version.kerby}</version>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${version.log4j}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-1.2-api</artifactId>
+        <version>${version.log4j2}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${version.log4j2}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${version.log4j2}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>${version.log4j2}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-web</artifactId>
+        <version>${version.log4j2}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>${version.protobuf2}</version>
+      </dependency>
       <dependency>
         <groupId>com.ngdata</groupId>
         <artifactId>hbase-indexer-server</artifactId>
@@ -442,13 +565,13 @@
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
-        <version>1.9.0</version>
+        <version>${version.mockito}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.8.1</version>
+        <version>${version.junit}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
@@ -469,6 +592,16 @@
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-core-asl</artifactId>
+        <version>${version.jackson}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-xc</artifactId>
+        <version>${version.jackson}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-jaxrs</artifactId>
         <version>${version.jackson}</version>
       </dependency>
       <dependency>
@@ -775,6 +908,46 @@
       </dependency>
       <dependency>
         <groupId>io.netty</groupId>
+        <artifactId>netty-buffer</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-common</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-handler</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-resolver</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport-native-epoll</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport-native-unix-common</artifactId>
+        <version>${version.netty}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
         <artifactId>netty</artifactId>
         <version>${version.netty.hadoop}</version>
       </dependency>      
@@ -877,6 +1050,11 @@
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-alpn-server</artifactId>
         <version>${version.jetty}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.thrift</groupId>
+        <artifactId>libthrift</artifactId>
+        <version>${version.thrift}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
