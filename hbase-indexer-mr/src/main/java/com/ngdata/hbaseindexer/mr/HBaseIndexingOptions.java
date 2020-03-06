@@ -97,6 +97,7 @@ class HBaseIndexingOptions {
     boolean isDryRun;
     File log4jConfigFile;
     boolean isVerbose;
+    int goLiveTimeout;
 
     // HBaseMapReduceIndexerTool specifics
     String hbaseIndexerZkHost;

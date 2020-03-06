@@ -18,7 +18,6 @@ package com.ngdata.hbaseindexer.mr;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Map;
 
 import net.sourceforge.argparse4j.ArgumentParsers;
@@ -52,6 +51,8 @@ class HBaseIndexerArgumentParser {
     private static final Log LOG = LogFactory.getLog(HBaseIndexerArgumentParser.class);
 
     private boolean showNonSolrCloud = false;
+
+    private static final int GO_LIVE_DEFAULT_TIMEOUT_MS = 24 * 3600 * 1000;
     
     /**
      * Parses the given command line arguments.
@@ -253,6 +254,14 @@ class HBaseIndexerArgumentParser {
                 .choices(new RangeArgumentChoice(1, Integer.MAX_VALUE))
                 .setDefault(1000)
                 .help("Tuning knob that indicates the maximum number of live merges to run in parallel at one time.");
+
+        Argument goLiveTimeout = goLiveGroup.addArgument("--go-live-timeout")
+                .metavar("INTEGER")
+                .type(Integer.class)
+                .choices(new RangeArgumentChoice(1, Integer.MAX_VALUE))
+                .setDefault(Integer.valueOf(GO_LIVE_DEFAULT_TIMEOUT_MS))
+                .required(false)
+                .help("Timeout in ms to wait for the merge to complete before the connection times out and the tool fails.");
 
         ArgumentGroup optionalGroup = parser.addArgumentGroup("Optional arguments");
 
@@ -538,6 +547,7 @@ class HBaseIndexerArgumentParser {
         opts.goLive = ns.getBoolean(goLiveArg.getDest());
         opts.goLiveMinReplicationFactor = ns.getInt(goLiveMinReplicationFactorArg.getDest());
         opts.goLiveThreads = ns.getInt(goLiveThreadsArg.getDest());
+        opts.goLiveTimeout = ns.getInt(goLiveTimeout.getDest());
         opts.collection = ns.getString(collectionArg.getDest());
         opts.clearIndex = ns.getBoolean(clearIndexArg.getDest());
 

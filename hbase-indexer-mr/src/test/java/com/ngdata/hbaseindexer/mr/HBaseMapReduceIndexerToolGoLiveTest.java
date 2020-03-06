@@ -293,6 +293,7 @@ public class HBaseMapReduceIndexerToolGoLiveTest {
             "--collection", "collection1",
                 "--log4j", new File(Resources.getResource("log4j.properties").toURI()).toString(),
             "--go-live-threads", "999",
+            "--go-live-timeout", "600000", // 10 minutes
             "--go-live");
         
         verifySolrContents();
@@ -312,6 +313,7 @@ public class HBaseMapReduceIndexerToolGoLiveTest {
             "--collection", "collection1",
                 "--log4j", new File(Resources.getResource("log4j.properties").toURI()).toString(),
             "--go-live-threads", "999",
+            "--go-live-timeout", "600000", // 10 minutes
             "--go-live");
         
         verifySolrContents();
