@@ -31,6 +31,26 @@
         <!-- CDH-19032: HBase batch indexing jobs sometimes fail with MR errors in the log (Avoid bundling jasper jar's) -->
         <exclude>tomcat:jasper-compiler</exclude>
         <exclude>tomcat:jasper-runtime</exclude>
+        <exclude>com.amazonaws:aws-java-sdk-bundle</exclude>
+        <exclude>org.apache.curator:*</exclude>
+        <exclude>org.apache.hadoop:hadoop-annotations</exclude>
+        <exclude>org.apache.hadoop:hadoop-auth</exclude>
+        <exclude>org.apache.hadoop:hadoop-aws</exclude>
+        <exclude>org.apache.hadoop:hadoop-azure</exclude>
+        <exclude>org.apache.hadoop:hadoop-azure-datalake</exclude>
+        <exclude>org.apache.hadoop:hadoop-common</exclude>
+        <exclude>org.apache.hadoop:hadoop-distcp</exclude>
+        <exclude>org.apache.hadoop:hadoop-hdfs</exclude>
+        <exclude>org.apache.hadoop:hadoop-hdfs-client</exclude>
+        <exclude>org.apache.hadoop:hadoop-mapreduce-client-common</exclude>
+        <exclude>org.apache.hadoop:hadoop-mapreduce-client-core</exclude>
+        <exclude>org.apache.hadoop:hadoop-mapreduce-client-jobclient</exclude>
+        <exclude>org.apache.hadoop:hadoop-yarn-api</exclude>
+        <exclude>org.apache.hadoop:hadoop-yarn-client</exclude>
+        <exclude>org.apache.hadoop:hadoop-yarn-common</exclude>
+        <exclude>org.apache.hadoop:hadoop-yarn-registry</exclude>
+        <exclude>org.apache.hadoop:hadoop-yarn-server-common</exclude>
+        <exclude>org.apache.hadoop:hadoop-yarn-server-web-proxy</exclude>
       </excludes>
     </dependencySet>
     <dependencySet>
