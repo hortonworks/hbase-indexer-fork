@@ -18,8 +18,8 @@ package com.ngdata.hbaseindexer.model.api;
 import java.util.Map;
 
 import com.ngdata.hbaseindexer.util.IndexerNameValidator;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Defines an indexer within the {@link IndexerModel}.

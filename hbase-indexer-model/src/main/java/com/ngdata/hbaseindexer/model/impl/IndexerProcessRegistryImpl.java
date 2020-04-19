@@ -18,7 +18,6 @@ package com.ngdata.hbaseindexer.model.impl;
 import java.util.List;
 
 import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.ngdata.hbaseindexer.ConfKeys;
 import com.ngdata.hbaseindexer.model.api.IndexerProcess;
@@ -26,12 +25,11 @@ import com.ngdata.hbaseindexer.model.api.IndexerProcessRegistry;
 import com.ngdata.sep.util.zookeeper.ZkUtil;
 import com.ngdata.sep.util.zookeeper.ZooKeeperItf;
 import com.ngdata.sep.util.zookeeper.ZooKeeperOperation;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.ZooDefs;
 
 /**
  * Persistence of the state of all indexer processes (per indexer) in ZooKeeper.

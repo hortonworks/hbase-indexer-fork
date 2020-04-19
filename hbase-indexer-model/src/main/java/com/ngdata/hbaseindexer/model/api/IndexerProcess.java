@@ -15,9 +15,8 @@
  */
 package com.ngdata.hbaseindexer.model.api;
 
-import org.apache.commons.lang.builder.ToStringStyle;
-
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents a single Indexer process for a single index on a single host.
