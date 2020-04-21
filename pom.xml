@@ -50,7 +50,7 @@
     <version.gson>2.2.4</version.gson>
     <version.jline>2.12</version.jline>
     <version.kerby>1.1.1</version.kerby>
-    <version.log4j>1.2.17</version.log4j>
+    <version.log4j>1.2.17-cloudera1</version.log4j>
     <version.log4j2>2.11.2</version.log4j2>
     <version.junit>4.8.1</version.junit>
     <version.mockito>1.9.0</version.mockito>
