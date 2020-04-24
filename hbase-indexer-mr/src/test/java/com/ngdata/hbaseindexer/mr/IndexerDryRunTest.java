@@ -65,6 +65,7 @@ public class IndexerDryRunTest {
     
     @BeforeClass
     public static void setupBeforeClass() throws Exception {
+        System.setProperty("jetty.testMode", "true");
         HBASE_TEST_UTILITY.startMiniCluster();
         
         int zkClientPort = HBASE_TEST_UTILITY.getZkCluster().getClientPort();

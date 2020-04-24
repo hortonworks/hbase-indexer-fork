@@ -85,6 +85,7 @@ public class HBaseMapReduceIndexerToolDirectWriteTest {
     
     @BeforeClass
     public static void setupBeforeClass() throws Exception {
+        System.setProperty("jetty.testMode", "true");
         MR_TEST_UTIL = new MRTestUtil(HBASE_TEST_UTILITY);
         HBASE_TEST_UTILITY.startMiniCluster();
         MR_TEST_UTIL.startMrCluster();
