@@ -34,7 +34,7 @@
     <version.httpcore>4.4.10</version.httpcore>
     <version.jersey>1.19</version.jersey>
     <version.jaxb-api>2.2.11</version.jaxb-api>
-    <version.curator>4.2.0</version.curator>
+    <version.curator>4.3.0.7.2.1.0-SNAPSHOT</version.curator>
     <version.solr-security-util>8.4.1.7.2.1.0-SNAPSHOT</version.solr-security-util>
     <version.netty>4.1.47.Final</version.netty>
     <version.netty.hadoop>3.10.5.Final</version.netty.hadoop>
