@@ -56,7 +56,7 @@
     <version.mockito>1.9.0</version.mockito>
     <version.protobuf2>2.5.0</version.protobuf2>
     <version.re2j>1.2</version.re2j>
-    <version.thrift>0.12.0</version.thrift>
+    <version.thrift>0.13.0</version.thrift>
         
     <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
