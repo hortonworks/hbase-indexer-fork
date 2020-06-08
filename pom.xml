@@ -1056,6 +1056,11 @@
         <artifactId>libthrift</artifactId>
         <version>${version.thrift}</version>
       </dependency>
+      <dependency>
+        <groupId>org.apache.derby</groupId>
+        <artifactId>derby</artifactId>
+        <version>10.14.2.0</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
