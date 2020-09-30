@@ -57,7 +57,7 @@
     <version.protobuf2>2.5.0</version.protobuf2>
     <version.re2j>1.2</version.re2j>
     <version.thrift>0.13.0</version.thrift>
-        
+    <version.derby>10.14.2.0</version.derby>
     <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
     <skip.surefire.tests>${skipTests}</skip.surefire.tests>
@@ -1059,7 +1059,7 @@
       <dependency>
         <groupId>org.apache.derby</groupId>
         <artifactId>derby</artifactId>
-        <version>10.14.2.0</version>
+        <version>${version.derby}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
