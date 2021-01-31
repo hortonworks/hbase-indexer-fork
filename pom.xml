@@ -19,13 +19,13 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <properties>
-    <version.solr>8.4.1.7.2.8.0-SNAPSHOT</version.solr>
+    <version.solr>8.4.1.7.0.2.1-SNAPSHOT</version.solr>
     <version.guava>28.1-jre</version.guava>
     <version.joda-time>2.10.6</version.joda-time>
     <version.slf4j>1.7.30</version.slf4j>
-    <version.hbase>2.2.6.7.2.8.0-SNAPSHOT</version.hbase>
-    <version.hadoop>3.1.1.7.2.8.0-SNAPSHOT</version.hadoop>
-    <version.zookeeper>3.5.5.7.2.8.0-SNAPSHOT</version.zookeeper>
+    <version.hbase>2.2.6.7.0.2.1-SNAPSHOT</version.hbase>
+    <version.hadoop>3.1.1.7.0.2.1-SNAPSHOT</version.hadoop>
+    <version.zookeeper>3.5.5.7.0.2.1-SNAPSHOT</version.zookeeper>
     <version.jackson>1.9.13</version.jackson>
     <version.jackson-mapper-asl>1.9.13-cloudera.1</version.jackson-mapper-asl>
     <version.jackson-hadoop>2.10.0</version.jackson-hadoop>
@@ -34,11 +34,11 @@
     <version.httpcore>4.4.13</version.httpcore>
     <version.jersey>1.19</version.jersey>
     <version.jaxb-api>2.2.11</version.jaxb-api>
-    <version.curator>4.3.0.7.2.8.0-SNAPSHOT</version.curator>
-    <version.solr-security-util>8.4.1.7.2.8.0-SNAPSHOT</version.solr-security-util>
+    <version.curator>4.3.0.7.0.2.1-SNAPSHOT</version.curator>
+    <version.solr-security-util>8.4.1.7.0.2.1-SNAPSHOT</version.solr-security-util>
     <version.netty>4.1.51.Final</version.netty>
     <version.netty.hadoop>3.10.6.Final</version.netty.hadoop>
-    <version.search>1.0.0.7.2.8.0-SNAPSHOT</version.search>
+    <version.search>1.0.0.7.0.2.1-SNAPSHOT</version.search>
     <version.commons.beanutils>1.9.4</version.commons.beanutils>
     <version.commons.cli>1.2</version.commons.cli>
     <version.commons.codec>1.15</version.commons.codec>
@@ -72,7 +72,7 @@
   <groupId>com.ngdata</groupId>
   <artifactId>hbase-indexer</artifactId>
   <packaging>pom</packaging>
-  <version>1.5.0.7.2.8.0-SNAPSHOT</version>
+  <version>1.5.0.7.0.2.1-SNAPSHOT</version>
   <name>HBase Indexer</name>
 
   <url>http://www.ngdata.com/</url>
