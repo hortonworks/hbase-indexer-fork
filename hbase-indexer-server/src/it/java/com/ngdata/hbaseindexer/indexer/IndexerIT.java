@@ -96,6 +96,7 @@ public class IndexerIT {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
+        System.setProperty("jetty.testMode", "true");
         // Note on the use of @BeforeClass:
         //   Ideally, we would tear up and down everything with each test. Unfortunately, due to connection
         //   leaks in HBase (CDH4.2), we can't do this. For example, ReplicationPeer.zkw isn't closed, and
