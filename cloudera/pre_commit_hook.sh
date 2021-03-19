@@ -4,7 +4,21 @@ set -ex
 
 export MAVEN_OPTS="${MAVEN_OPTS} -Xmx1g -XX:MaxPermSize=256m"
 
-# activate mvn-gbn wrapper
-mv "$(which mvn-gbn-wrapper)" "$(dirname "$(which mvn-gbn-wrapper)")/mvn"
+cat > mvn_settings.xml <<EOF
+<settings>
+    <localRepository/>
+    <mirrors>
+        <mirror>
+            <id>public</id>
+            <mirrorOf>*</mirrorOf>
+            <url>https://nexus-private.hortonworks.com/nexus/content/groups/public</url>
+        </mirror>
+    </mirrors>
+    <profiles/>
+</settings>
+EOF
 
-mvn --update-snapshots --batch-mode -Dmaven.test.failure.ignore=true -Dtests.nightly=true --fail-at-end clean install
+echo "::>> cat mvn_settings.xml"
+cat mvn_settings.xml
+
+mvn -s mvn_settings.xml --update-snapshots --batch-mode -Dtests.nightly=true --fail-at-end clean install
