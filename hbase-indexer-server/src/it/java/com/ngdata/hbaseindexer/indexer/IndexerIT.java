@@ -61,6 +61,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -983,7 +984,8 @@ public class IndexerIT {
         table.close();
     }
 
-    @Test
+    // CDPD-24133 Ignore test
+    @Ignore
     public void testLifecycleListeners() throws Exception {
         IndexerLifecycleListener indexerLifecycleListener = Mockito.mock(IndexerLifecycleListener.class);
         main.getIndexerMaster().registerLifecycleListener(indexerLifecycleListener);
