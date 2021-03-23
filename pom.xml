@@ -36,7 +36,7 @@
     <version.jaxb-api>2.2.11</version.jaxb-api>
     <version.curator>4.3.0.7.2.9.0-SNAPSHOT</version.curator>
     <version.solr-security-util>8.4.1.7.2.9.0-SNAPSHOT</version.solr-security-util>
-    <version.netty>4.1.51.Final</version.netty>
+    <version.netty>4.1.60.Final</version.netty>
     <version.netty.hadoop>3.10.6.Final</version.netty.hadoop>
     <version.search>1.0.0.7.2.9.0-SNAPSHOT</version.search>
     <version.commons.beanutils>1.9.4</version.commons.beanutils>
@@ -52,7 +52,7 @@
     <version.jline>2.12</version.jline>
     <version.kerby>1.1.1</version.kerby>
     <version.log4j>1.2.17-cloudera1</version.log4j>
-    <version.log4j2>2.13.3</version.log4j2>
+    <version.log4j2>2.14.1</version.log4j2>
     <version.junit>4.8.1</version.junit>
     <version.mockito>1.9.0</version.mockito>
     <version.protobuf2>2.5.0</version.protobuf2>
