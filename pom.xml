@@ -60,6 +60,7 @@
     <version.thrift>0.13.0</version.thrift>
     <version.derby>10.14.2.0</version.derby>
     <version.commons-logging>1.2</version.commons-logging>
+    <version.pdfbox>2.0.23</version.pdfbox>
     <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
     <skip.surefire.tests>${skipTests}</skip.surefire.tests>
@@ -1065,6 +1066,28 @@
         <artifactId>commons-collections4</artifactId>
         <version>${version.commons.collections4}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>fontbox</artifactId>
+        <version>${version.pdfbox}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>${version.pdfbox}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox-tools</artifactId>
+        <version>${version.pdfbox}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>preflight</artifactId>
+        <version>${version.pdfbox}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
