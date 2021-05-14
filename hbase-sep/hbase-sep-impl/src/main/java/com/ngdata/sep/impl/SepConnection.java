@@ -20,15 +20,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Row;
 import org.apache.hadoop.hbase.security.User;
-
-import jersey.repackaged.com.google.common.base.Preconditions; 
-
 
 /**
  * This class receives the replication stream/events of a region server of the HBase slave cluster
@@ -50,8 +48,8 @@ final class SepConnection extends ReplicationSlaveConnection {
     super(conf, pool, user);
     String subscriptionId = conf.get(SUBSCRIPTION_ID_PARAM_NAME);
     this.params = PARAMS_MAP.get(subscriptionId);
-    Preconditions.checkNotNull(this.params);
-    
+    Objects.requireNonNull(this.params);
+
     /*
      * The following approach to pass non-primitive params to a SepConnection doesn't work because
      * the ReplicationSink constructor decorates conf object into another conf object, so the
