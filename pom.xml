@@ -44,7 +44,7 @@
     <version.commons.codec>1.15</version.commons.codec>
     <version.commons.collections>3.2.2</version.commons.collections>
     <version.commons.collections4>4.4</version.commons.collections4>
-    <version.commons.compress>1.19</version.commons.compress>
+    <version.commons.compress>1.21</version.commons.compress>
     <version.commons.daemon>1.0.13</version.commons.daemon>
     <version.commons.io>2.6</version.commons.io>
     <version.commons.lang3>3.11</version.commons.lang3>
