@@ -171,7 +171,12 @@ public class Main {
                 indexerProcessRegistry, tablePool, conf);
 
         indexerSupervisor.init();
-        startHttpServer(conf, hostname);
+
+        if(!Boolean.getBoolean("hbaseindexer.httpserver.disabled")){
+            startHttpServer(conf, hostname);
+        } else {
+            log.info("REST interface http server will not be started as it is disabled by configuration option.");
+        }
 
     }
 
