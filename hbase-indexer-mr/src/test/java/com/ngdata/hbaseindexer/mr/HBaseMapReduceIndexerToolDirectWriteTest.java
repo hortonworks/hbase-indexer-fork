@@ -243,6 +243,7 @@ public class HBaseMapReduceIndexerToolDirectWriteTest {
                 "--hbase-indexer-file", new File(Resources.getResource(getClass(), "user_indexer.xml").toURI()).toString(),
                 "--reducers", "0",
                 "--collection", "collection1",
+                "--solr-client-socket-timeout", "100000",
                 "--zk-host", SOLR_ZK);
         
         assertEquals(1, executeSolrQuery("firstname_s:John lastname_s:Doe").size());

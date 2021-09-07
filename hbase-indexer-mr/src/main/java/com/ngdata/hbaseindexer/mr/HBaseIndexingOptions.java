@@ -22,6 +22,7 @@ import com.google.common.collect.Maps;
 import com.google.common.io.Files;
 import com.ngdata.hbaseindexer.ConfKeys;
 import com.ngdata.hbaseindexer.HBaseIndexerConfiguration;
+import com.ngdata.hbaseindexer.SolrConnectionParams;
 import com.ngdata.hbaseindexer.conf.DefaultIndexerComponentFactory;
 import com.ngdata.hbaseindexer.conf.IndexerComponentFactory;
 import com.ngdata.hbaseindexer.conf.IndexerComponentFactoryUtil;
@@ -98,6 +99,7 @@ class HBaseIndexingOptions {
     File log4jConfigFile;
     boolean isVerbose;
     int goLiveTimeout;
+    int solrClientSocketTimeoutMs;
 
     // HBaseMapReduceIndexerTool specifics
     String hbaseIndexerZkHost;
@@ -471,6 +473,10 @@ class HBaseIndexingOptions {
             if (collection != null) {
                 indexConnectionParams.put("solr.collection", collection);
             }
+        }
+
+        if ( solrClientSocketTimeoutMs > 0 ) {
+            indexConnectionParams.put(SolrConnectionParams.SOLR_CLIENT_SOCKET_TIMEOUT, String.valueOf(solrClientSocketTimeoutMs));
         }
 
         ByteArrayInputStream is = new ByteArrayInputStream(configuration);

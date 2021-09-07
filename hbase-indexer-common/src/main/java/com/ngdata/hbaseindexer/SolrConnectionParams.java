@@ -52,4 +52,6 @@ public class SolrConnectionParams {
      */
     public static final String MAX_CONNECTIONS = "solr.conn.max";
 
+    public static final String SOLR_CLIENT_SOCKET_TIMEOUT = "solr.client.socket.timeout";
+
 }

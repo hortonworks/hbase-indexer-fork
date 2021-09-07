@@ -306,7 +306,8 @@ public class HBaseMapReduceIndexerTool extends Configured implements Tool {
         if (solrMode.equals("cloud")) {
             String indexZkHost = indexConnectionParams.get(SolrConnectionParams.ZOOKEEPER);
             String collectionName = indexConnectionParams.get(SolrConnectionParams.COLLECTION);
-            CloudSolrClient solrServer = new CloudSolrClient.Builder().withZkHost(indexZkHost).build();
+            int solrClientSocketTimeoutMs = getSolrClientSocketTimeoutMs(indexConnectionParams);
+            CloudSolrClient solrServer = new CloudSolrClient.Builder().withZkHost(indexZkHost).withSocketTimeout(solrClientSocketTimeoutMs).build();
             int zkSessionTimeout = HBaseIndexerConfiguration.getSessionTimeout(getConf());
             solrServer.setZkClientTimeout(zkSessionTimeout);
             solrServer.setZkConnectTimeout(zkSessionTimeout);
@@ -324,6 +325,21 @@ public class HBaseMapReduceIndexerTool extends Configured implements Tool {
             throw new RuntimeException("Only 'cloud' and 'classic' are valid values for solr.mode, but got " + solrMode);
         }
 
+    }
+
+    public static int getSolrClientSocketTimeoutMs(Map<String, String> indexConnectionParams) {
+        String solrClientSocketTimeoutMsStr = indexConnectionParams.get(SolrConnectionParams.SOLR_CLIENT_SOCKET_TIMEOUT);
+        int solrClientSocketTimeoutMs;
+        if (solrClientSocketTimeoutMsStr == null || "".equals(solrClientSocketTimeoutMsStr)) {
+            solrClientSocketTimeoutMs = HBaseIndexerArgumentParser.DEFAULT_SOLR_CLIENT_SOCKET_TIMEOUT_MS;
+        } else {
+            try {
+                solrClientSocketTimeoutMs = Integer.parseInt(solrClientSocketTimeoutMsStr);
+            } catch (NumberFormatException e) {
+                solrClientSocketTimeoutMs = HBaseIndexerArgumentParser.DEFAULT_SOLR_CLIENT_SOCKET_TIMEOUT_MS;
+            }
+        }
+        return solrClientSocketTimeoutMs;
     }
 
     static List<List<String>> buildShardUrls(List<Object> urls, Integer numShards) {

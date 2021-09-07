@@ -55,7 +55,6 @@ import com.codahale.metrics.Counting;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.SharedMetricRegistries;
 import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -275,6 +274,7 @@ public class HBaseIndexerMapper extends TableMapper<Text, SolrInputDocumentWrita
             throws IOException {
         String indexZkHost = indexConnectionParams.get(SolrConnectionParams.ZOOKEEPER);
         String collectionName = indexConnectionParams.get(SolrConnectionParams.COLLECTION);
+        int solrClientSocketTimeoutMs = HBaseMapReduceIndexerTool.getSolrClientSocketTimeoutMs(indexConnectionParams);
 
         if (indexZkHost == null) {
             throw new IllegalStateException("No index ZK host defined");
@@ -283,7 +283,7 @@ public class HBaseIndexerMapper extends TableMapper<Text, SolrInputDocumentWrita
         if (collectionName == null) {
             throw new IllegalStateException("No collection name defined");
         }
-        CloudSolrClient solrServer = new CloudSolrClient.Builder().withZkHost(indexZkHost).build();
+        CloudSolrClient solrServer = new CloudSolrClient.Builder().withZkHost(indexZkHost).withSocketTimeout(solrClientSocketTimeoutMs).build();
         int zkSessionTimeout = HBaseIndexerConfiguration.getSessionTimeout(context.getConfiguration());
         solrServer.setZkClientTimeout(zkSessionTimeout);
         solrServer.setZkConnectTimeout(zkSessionTimeout);      

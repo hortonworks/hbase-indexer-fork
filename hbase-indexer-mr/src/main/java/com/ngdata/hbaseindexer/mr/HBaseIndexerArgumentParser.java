@@ -53,6 +53,7 @@ class HBaseIndexerArgumentParser {
     private boolean showNonSolrCloud = false;
 
     private static final int GO_LIVE_DEFAULT_TIMEOUT_MS = 24 * 3600 * 1000;
+    static final int DEFAULT_SOLR_CLIENT_SOCKET_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
     
     /**
      * Parses the given command line arguments.
@@ -200,6 +201,14 @@ class HBaseIndexerArgumentParser {
                     + "\n"
                     + "If --solr-home-dir is not specified, the Solr home directory for the collection "
                     + "will be downloaded from this ZooKeeper ensemble.");
+
+        Argument solrClientSocketTimeoutArg = solrClusterInfoGroup.addArgument("--solr-client-socket-timeout")
+                .metavar("INTEGER")
+                .type(Integer.class)
+                .choices(new RangeArgumentChoice(1, Integer.MAX_VALUE))
+                .setDefault(Integer.valueOf(DEFAULT_SOLR_CLIENT_SOCKET_TIMEOUT_MS))
+                .required(false)
+                .help("Socket timeout in ms for solr communication for mapper tasks sending the data directly to live Solr servers (if reducers are set to 0)");
 
         Argument useZkSolrConfig = solrClusterInfoGroup.addArgument("--use-zk-solrconfig.xml")
                 .action(Arguments.storeTrue())
@@ -541,6 +550,7 @@ class HBaseIndexerArgumentParser {
         opts.isDryRun = ns.getBoolean(dryRunArg.getDest());
         opts.isVerbose = ns.getBoolean(verboseArg.getDest());
         opts.zkHost = ns.getString(zkHostArg.getDest());
+        opts.solrClientSocketTimeoutMs = ns.getInt(solrClientSocketTimeoutArg.getDest());
         opts.useZkSolrConfig = ns.getBoolean(useZkSolrConfig.getDest());
         opts.shards = ns.getInt(shardsArg.getDest());
         opts.shardUrls = HBaseMapReduceIndexerTool.buildShardUrls(ns.getList(shardUrlsArg.getDest()), opts.shards);
