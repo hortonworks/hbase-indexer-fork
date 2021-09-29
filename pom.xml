@@ -64,6 +64,7 @@
     <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
     <version.cxf>3.3.11</version.cxf>
+    <version.jsoup>1.14.2</version.jsoup>
     <skip.surefire.tests>${skipTests}</skip.surefire.tests>
 
     <!-- Tells maven plugins what file encoding to use -->
@@ -1092,6 +1093,11 @@
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-client</artifactId>
         <version>${version.cxf}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jsoup</groupId>
+        <artifactId>jsoup</artifactId>
+        <version>${version.jsoup}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
