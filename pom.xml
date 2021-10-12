@@ -46,7 +46,7 @@
     <version.commons.collections4>4.4</version.commons.collections4>
     <version.commons.compress>1.21</version.commons.compress>
     <version.commons.daemon>1.0.13</version.commons.daemon>
-    <version.commons.io>2.6</version.commons.io>
+    <version.commons.io>2.11.0</version.commons.io>
     <version.commons.lang3>3.11</version.commons.lang3>
     <version.gson>2.2.4</version.gson>
     <version.jline>2.12</version.jline>
