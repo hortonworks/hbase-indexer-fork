@@ -28,7 +28,7 @@ import org.apache.hadoop.hbase.HConstants;
 import org.apache.hadoop.hbase.ServerName;
 import org.apache.hadoop.hbase.exceptions.DeserializationException;
 import org.apache.hadoop.hbase.util.Bytes;
-import org.apache.hadoop.hbase.util.FSUtils;
+import org.apache.hadoop.hbase.util.CommonFSUtils;
 import org.apache.hadoop.hbase.zookeeper.ZKUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -88,7 +88,7 @@ public class ReplicationStatusRetriever {
         }
 
         fileSystem = FileSystem.get(conf);
-        hbaseRootDir = FSUtils.getRootDir(conf);
+        hbaseRootDir = CommonFSUtils.getRootDir(conf);
         hbaseOldLogDir = new Path(hbaseRootDir, HConstants.HREGION_OLDLOGDIR_NAME);
     }
 

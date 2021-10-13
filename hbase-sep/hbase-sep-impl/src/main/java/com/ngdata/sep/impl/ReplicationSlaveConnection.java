@@ -208,7 +208,12 @@ abstract class ReplicationSlaveConnection implements Connection {
           @Override 
           public TableDescriptor getDescriptor() throws IOException { 
             return null; 
-          } 
+          }
+
+          @Override
+          public RegionLocator getRegionLocator() throws IOException {
+            return null;
+          }
 
           @Override 
           public boolean exists(Get get) throws IOException { 
@@ -306,8 +311,8 @@ abstract class ReplicationSlaveConnection implements Connection {
           } 
 
           @Override 
-          public void mutateRow(RowMutations rm) throws IOException { 
-
+          public Result mutateRow(RowMutations rm) throws IOException {
+            return null;
           } 
 
           @Override 
