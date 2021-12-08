@@ -68,6 +68,8 @@ public class Main {
     private Server server;
 
     public static void main(String[] args) {
+        log.info("Setting javax.security.auth.useSubjectCredsOnly to false!");
+        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
         Daemon d = new Daemon() {
             @Override
             public void init() throws Exception {

@@ -126,7 +126,8 @@ public class HBaseMapReduceIndexerTool extends Configured implements Tool {
     }
 
     public int run(HBaseIndexingOptions hbaseIndexingOpts, JobProcessCallback callback) throws Exception {
-
+        LOG.info("Setting javax.security.auth.useSubjectCredsOnly to false!");
+        System.setProperty("javax.security.auth.useSubjectCredsOnly", "false");
         if (hbaseIndexingOpts.isDryRun) {
             return new IndexerDryRun(hbaseIndexingOpts, getConf(), System.out).run();
         }
