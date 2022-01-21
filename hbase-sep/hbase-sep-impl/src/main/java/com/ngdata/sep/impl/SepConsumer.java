@@ -45,7 +45,7 @@ import org.apache.hadoop.hbase.regionserver.HRegionServer;
 import org.apache.hadoop.hbase.replication.regionserver.WALEntrySinkFilter;
 import org.apache.hadoop.hbase.security.User;
 import org.apache.hadoop.hbase.util.Bytes;
-import org.apache.hadoop.hbase.zookeeper.ZKUtil;
+import org.apache.hadoop.hbase.zookeeper.ZKAuthentication;
 import org.apache.hadoop.metrics2.lib.DefaultMetricsSystem;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -170,7 +170,7 @@ public class SepConsumer {
         this.serverName = regionServer.getServerName();
 
         // login the zookeeper client principal (if using security)
-        ZKUtil.loginClient(hbaseConf, "hbase.zookeeper.client.keytab.file",
+        ZKAuthentication.loginClient(hbaseConf, "hbase.zookeeper.client.keytab.file",
                 "hbase.zookeeper.client.kerberos.principal", hostName);
 
         // login the server principal (if using secure Hadoop)
