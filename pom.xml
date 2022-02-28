@@ -65,6 +65,7 @@
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
     <version.cxf>3.3.11</version.cxf>
     <version.jsoup>1.14.2</version.jsoup>
+    <version.quartz>2.3.2</version.quartz>
     <skip.surefire.tests>${skipTests}</skip.surefire.tests>
 
     <!-- Tells maven plugins what file encoding to use -->
@@ -1098,6 +1099,11 @@
         <groupId>org.jsoup</groupId>
         <artifactId>jsoup</artifactId>
         <version>${version.jsoup}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz</artifactId>
+        <version>${version.quartz}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
