@@ -88,6 +88,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import static com.ngdata.hbaseindexer.indexer.SolrClientFactory.createHttpSolrClients;
 import static com.ngdata.hbaseindexer.util.solr.SolrConnectionParamUtil.getSolrMaxConnectionsPerRoute;
@@ -571,19 +572,37 @@ public class HBaseMapReduceIndexerTool extends Configured implements Tool {
         }
         ;
 
-        // publish results dir
-        if (!rename(outputReduceDir, outputResultsDir, fs)) {
-            return -1;
-        }
-
         if (options.goLive) {
+          // save the results into a unique subdirectory
+          fs.mkdirs(outputResultsDir);
+          UUID dirUuid = UUID.randomUUID();
+          Path outputResultsDirUuid = new Path(outputResultsDir, dirUuid.toString());
+          if (!rename(outputReduceDir, outputResultsDirUuid, fs)) {
+              return -1;
+          }
           // give the solr process acls to read/execute the results directory, which is necessary
           // for the go-live phase.  Otherwise, if the client is running with a restrictive umask
           // (e.g. 077), solr may be unable to read the directory in order to do the merge.
           modifyAclsForGoLive(options.outputDir, outputResultsDir, fs);
-          if (!new GoLive().goLive(options, listSortedOutputShardDirs(job, outputResultsDir, fs))) {
+          if (!new GoLive().goLive(options, listSortedOutputShardDirs(job, outputResultsDirUuid, fs))) {
             return -1;
           }
+          // renaming the Uuid subdirectory to result directory in three steps
+          // because a single step rename does not work
+          Path outputResultsDirTemp = new Path(options.outputDir, RESULTS_DIR+".TEMP");
+          if (!(rename(outputResultsDirUuid, outputResultsDirTemp, fs)
+                  && delete(outputResultsDir, true, fs)
+                  && rename(outputResultsDirTemp, outputResultsDir, fs))) {
+              System.out.println("The index was successfully merged but we failed to clean up the temporary directories.");
+              return -1;
+          }
+        } else {
+          if (!rename(outputReduceDir, outputResultsDir, fs)) {
+            return -1;
+          }
+          System.out.println("Reusing an existing output directory ( --output-directory ) could cause checksum errors if imported into Solr using MERGEINDEXES API calls.\n"+
+            "Please specify a unique output directory for each HBASE MRIT invocation, and do not forget to cleanup up the directories after the merge.\n"+
+            "(When using --go-live, this is automatically taken care of.)");
         }
 
         goodbye(job, programStartTime);
