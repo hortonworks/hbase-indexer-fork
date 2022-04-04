@@ -16,10 +16,10 @@
 package com.ngdata.sep.tools.monitoring;
 
 import com.google.common.collect.Maps;
+import com.ngdata.hbaseindexer.util.http.HttpUtil;
 import com.ngdata.sep.tools.monitoring.ReplicationStatus.HLogInfo;
 import com.ngdata.sep.tools.monitoring.ReplicationStatus.Status;
 import com.ngdata.sep.util.zookeeper.ZooKeeperItf;
-import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
@@ -30,11 +30,7 @@ import org.apache.hadoop.hbase.exceptions.DeserializationException;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.util.CommonFSUtils;
 import org.apache.hadoop.hbase.zookeeper.ZKUtil;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.data.Stat;
@@ -104,7 +100,7 @@ public class ReplicationStatusRetriever {
         byte[] data = null;
 
         try {
-          data = readUrl(url);
+          data = HttpUtil.sendRequest(new HttpGet(url));
         } catch (ClientProtocolException ex) {
           if(!useSSL) {
             System.out.println("Hint : Please check if HBASE is configured with SSL. If yes then use --use-ssl option");
@@ -132,23 +128,6 @@ public class ReplicationStatusRetriever {
       } catch (DeserializationException e) {
         throw new RuntimeException(e);
       }
-    }
-
-    private byte[] readUrl(String url) throws IOException {
-        DefaultHttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet(url);
-
-        HttpResponse response = httpclient.execute(httpGet);
-
-        try {
-            HttpEntity entity = response.getEntity();
-            return IOUtils.toByteArray(entity.getContent());
-        } finally {
-            if (response.getEntity() != null) {
-                EntityUtils.consume(response.getEntity());
-            }
-            httpGet.releaseConnection();
-        }
     }
 
     public ReplicationStatus collectStatusFromZooKeepeer() throws Exception {

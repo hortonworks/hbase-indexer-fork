@@ -57,7 +57,11 @@
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
     </dependency>
-   </dependencies>
+    <dependency>
+      <groupId>com.ngdata</groupId>
+      <artifactId>hbase-indexer-common</artifactId>
+    </dependency>
+  </dependencies>
 
   <build>
   </build>
