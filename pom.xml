@@ -1360,6 +1360,11 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.openclover</groupId>
+          <artifactId>clover-maven-plugin</artifactId>
+          <version>4.4.1</version>
+      </plugin>
       </plugins>
     </pluginManagement>
 
@@ -1374,5 +1379,68 @@
       </plugin>
     </plugins>
   </build>
-
+<profiles>
+    <profile>
+      <id>clover</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>clover</name>
+        </property>
+      </activation>
+      <properties>
+        <cloverDatabase>${project.build.directory}/clover/hbaseindexer-coverage.db</cloverDatabase>
+        <!-- NB: This additional parametrization is made in order
+             to be able to re-define these properties with "-Dk=v" maven options.
+             By some reason the expressions declared in clover
+             docs like "${maven.clover.generateHtml}" do not work in that way.
+             However, the below properties are confirmed to work: e.g.
+             -DcloverGenHtml=false switches off the Html generation.
+             The default values provided here exactly correspond to Clover defaults, so
+             the behavior is 100% backwards compatible. -->
+        <cloverAlwaysReport>true</cloverAlwaysReport>
+        <cloverGenHtml>true</cloverGenHtml>
+        <cloverGenXml>true</cloverGenXml>
+        <cloverGenHistorical>false</cloverGenHistorical>
+        <clover.enabled>true</clover.enabled>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.openclover</groupId>
+            <artifactId>clover-maven-plugin</artifactId>
+            <configuration>
+              <includesAllSourceRoots>false</includesAllSourceRoots>
+              <includesTestSourceRoots>true</includesTestSourceRoots>
+              <cloverDatabase>${cloverDatabase}</cloverDatabase>
+              <targetPercentage>50%</targetPercentage>
+              <outputDirectory>${project.build.directory}/clover</outputDirectory>
+              <alwaysReport>${cloverAlwaysReport}</alwaysReport>
+              <generateHtml>${cloverGenHtml}</generateHtml>
+              <generateXml>${cloverGenXml}</generateXml>
+              <generateHistorical>${cloverGenHistorical}</generateHistorical>
+              <excludes>
+              </excludes>
+            </configuration>
+            <executions>
+              <execution>
+                <id>clover-setup</id>
+                <phase>process-sources</phase>
+                <goals>
+                  <goal>setup</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>clover</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>clover</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
