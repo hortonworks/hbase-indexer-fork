@@ -68,6 +68,7 @@
     <version.quartz>2.3.2</version.quartz>
     <skip.surefire.tests>${skipTests}</skip.surefire.tests>
     <version.jackson-databind>2.10.5.1</version.jackson-databind>
+    <version.ant>1.10.12</version.ant>
 
     <!-- Tells maven plugins what file encoding to use -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -1110,6 +1111,11 @@
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
         <version>${version.jackson-databind}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant</artifactId>
+        <version>${version.ant}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
