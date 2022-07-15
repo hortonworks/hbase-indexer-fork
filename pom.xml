@@ -67,6 +67,7 @@
     <version.jsoup>1.14.2</version.jsoup>
     <version.quartz>2.3.2</version.quartz>
     <skip.surefire.tests>${skipTests}</skip.surefire.tests>
+    <version.jackson-databind>2.10.5.1</version.jackson-databind>
 
     <!-- Tells maven plugins what file encoding to use -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -1104,6 +1105,11 @@
         <groupId>org.quartz-scheduler</groupId>
         <artifactId>quartz</artifactId>
         <version>${version.quartz}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${version.jackson-databind}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
