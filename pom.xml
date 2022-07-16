@@ -48,7 +48,7 @@
     <version.commons.daemon>1.0.13</version.commons.daemon>
     <version.commons.io>2.11.0</version.commons.io>
     <version.commons.lang3>3.11</version.commons.lang3>
-    <version.gson>2.2.4</version.gson>
+    <version.gson>2.9.0</version.gson>
     <version.jline>2.12</version.jline>
     <version.kerby>1.1.1</version.kerby>
     <version.log4j>1.2.17-cloudera6</version.log4j>
