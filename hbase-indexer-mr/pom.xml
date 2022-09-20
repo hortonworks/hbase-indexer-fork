@@ -119,7 +119,7 @@
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
+      <artifactId>slf4j-reload4j</artifactId>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -234,6 +234,10 @@
             <groupId>org.apache.hbase.thirdparty</groupId>
             <artifactId>hbase-shaded-jersey</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -254,6 +258,10 @@
             <groupId>org.apache.hbase.thirdparty</groupId>
             <artifactId>hbase-shaded-jersey</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -264,6 +272,10 @@
           <exclusion>
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>servlet-api-2.5</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -277,6 +289,10 @@
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>servlet-api-2.5</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -287,6 +303,10 @@
           <exclusion>
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>servlet-api-2.5</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -299,6 +319,10 @@
           <exclusion>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -322,6 +346,10 @@
           <exclusion>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -333,6 +361,10 @@
           <exclusion>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
           </exclusion>
         </exclusions>
       </dependency>

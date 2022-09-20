@@ -28,6 +28,7 @@
       <excludes>
         <exclude>${groupId}:${artifactId}</exclude>
         <exclude>org.slf4j:slf4j-log4j12</exclude>
+        <exclude>org.slf4j:slf4j-reload4j</exclude>
         <!-- CDH-19032: HBase batch indexing jobs sometimes fail with MR errors in the log (Avoid bundling jasper jar's) -->
         <exclude>tomcat:jasper-compiler</exclude>
         <exclude>tomcat:jasper-runtime</exclude>

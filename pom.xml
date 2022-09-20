@@ -22,7 +22,7 @@
     <version.solr>8.4.1.7.2.16.0-SNAPSHOT</version.solr>
     <version.guava>28.1-jre</version.guava>
     <version.joda-time>2.10.6</version.joda-time>
-    <version.slf4j>1.7.30</version.slf4j>
+    <version.slf4j>1.7.36</version.slf4j>
     <version.hbase>2.4.6.7.2.16.0-SNAPSHOT</version.hbase>
     <version.hadoop>3.1.1.7.2.16.0-SNAPSHOT</version.hadoop>
     <version.zookeeper>3.5.5.7.2.16.0-SNAPSHOT</version.zookeeper>
@@ -69,6 +69,7 @@
     <skip.surefire.tests>${skipTests}</skip.surefire.tests>
     <version.jackson-databind>2.10.5.1</version.jackson-databind>
     <version.ant>1.10.12</version.ant>
+    <version.reload4j>1.2.22</version.reload4j>
 
     <!-- Tells maven plugins what file encoding to use -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -543,6 +544,10 @@
             <groupId>javax.jms</groupId>
             <artifactId>jms</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -613,6 +618,12 @@
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-common</artifactId>
         <version>${version.hadoop}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hadoop</groupId>
@@ -623,11 +634,56 @@
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-hdfs</artifactId>
         <version>${version.hadoop}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-yarn-client</artifactId>
+        <version>${version.hadoop}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-yarn-common</artifactId>
+        <version>${version.hadoop}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-yarn-server-resourcemanager</artifactId>
+        <version>${version.hadoop}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-auth</artifactId>
         <version>${version.hadoop}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hadoop</groupId>
@@ -635,6 +691,12 @@
         <version>${version.hadoop}</version>
         <type>test-jar</type>
         <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hadoop</groupId>
@@ -642,6 +704,12 @@
         <version>${version.hadoop}</version>
         <type>test-jar</type>
         <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hadoop</groupId>
@@ -671,6 +739,12 @@
         <groupId>org.apache.hbase</groupId>
         <artifactId>hbase-common</artifactId>
         <version>${version.hbase}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hbase</groupId>
@@ -685,6 +759,12 @@
         <version>${version.hbase}</version>
         <type>test-jar</type>
         <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hbase</groupId>
@@ -703,6 +783,10 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-minicluster</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -720,6 +804,10 @@
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
       <dependency>
@@ -734,6 +822,10 @@
           <exclusion>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -760,6 +852,12 @@
         <type>test-jar</type>
         <scope>test</scope>
         <version>${version.hbase}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.hbase</groupId>
@@ -828,6 +926,17 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
+        <version>${version.slf4j}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-reload4j</artifactId>
         <version>${version.slf4j}</version>
       </dependency>
       <dependency>
@@ -1116,6 +1225,11 @@
         <groupId>org.apache.ant</groupId>
         <artifactId>ant</artifactId>
         <version>${version.ant}</version>
+      </dependency>
+      <dependency>
+         <groupId>ch.qos.reload4j</groupId>
+         <artifactId>reload4j</artifactId>
+         <version>${version.reload4j}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

@@ -139,6 +139,11 @@
       <artifactId>hbase-hadoop-compat</artifactId>
       <type>test-jar</type>
     </dependency>
+
+    <dependency>
+      <groupId>ch.qos.reload4j</groupId>
+      <artifactId>reload4j</artifactId>
+    </dependency>
   </dependencies>
 
 
